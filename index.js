@@ -35,7 +35,7 @@ app.get('/',async(req,res) =>{
 
 app.use(express.static(path.join(__dirname, 'assets')));
 
-app.listen(3000, function() {
+app.listen(3005, function() {
   console.log('Server running at port 3000: http://127.0.0.1:3000');
   process
     .on('exit', code => {
