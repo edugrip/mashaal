@@ -1,13 +1,16 @@
 var express = require('express');
 var app = express();
 var dbUtils = require('../utils/response');
-const CONFIG = require('../config/config');
+var config = require("../config/config");
+var jwt = require("jsonwebtoken");
+var utils = require("../utils/utils");
+var owasp = require("owasp-password-strength-test");
 module.exports = function(passport) {
     app.get("/", async (req, res) => {
         res.render("register");
       });
     
-      app.post("/start", async function(req, res, next) {
+      app.post("/register", async function(req, res, next) {
         try {
           var checkEmail = ([err, data] = await dbUtils.try(
             "SELECT count(id) as ids FROM users where email = ? ",
@@ -33,9 +36,6 @@ module.exports = function(passport) {
               var query = "INSERT INTO users  SET ? ";
               if (!email_response.error) {
                 var results = ([err, data] = await dbUtils.try(query, [fld]));
-                var fld = { email: req.body.email };
-                var query1 = "INSERT INTO user_details  SET ? ";
-                var results1 = ([err, data] = await dbUtils.try(query1, [fld]));
                 if (err) {
                   res.writeHead(200, { "Content-Type": "application/json" });
                   var obj = { success: 0, message: "Registration Failed!! " };
@@ -127,12 +127,14 @@ module.exports = function(passport) {
                 config.jwt_secret,
                 async function(err, decoded) {
                   var email = decoded.email;
+                  console.log(email);
+                  
                   var user = ([
                     err,
                     data
                   ] = await dbUtils.try(
                     "UPDATE `users` SET `name`= ?,`password` = ? where `email` = ?",
-                    [req.body.username, req.body.password, req.body.phone, email]
+                    [req.body.username, req.body.password,email]
                   ));
                   if (err) {
                     var err = await dbUtils.getUserReadableError(res, err);
@@ -141,7 +143,7 @@ module.exports = function(passport) {
                   else{
                     var obj = {
                       success: 1,
-                      message: "User successfully registered"
+                      message: "Password successfully Updated"
                     };
                     res.end(JSON.stringify(obj));
                   }

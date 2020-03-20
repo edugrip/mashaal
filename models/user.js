@@ -20,14 +20,14 @@ const dbUtils = require('../utils/response');
 //     }
 // }
 
-const findByEmail = async user => {
-  [err, user] = await dbUtils.try('select * from tbl_user where email = ?', [user], 1);
+const findByEmail = async (email,password) => {
+  [err, user] = await dbUtils.try('select * from users where email = ? and password = ?', [email,password], 1);
   if (!user || user.length == 0) return false;
 
-  return JSON.parse(user);
+  return user;
 };
 const findById = async id => {
-  [err, user] = await dbUtils.try('select * from tbl_user where id = ?', [id], 1);
+  [err, user] = await dbUtils.try('select * from users where id = ?', [id], 1);
   if (!user || user.length == 0) return [null, false];
 
   if (err) {
@@ -38,7 +38,7 @@ const findById = async id => {
 };
 const save = async user => {
   result = await database.query(
-    'INSERT INTO `tbl_user`( `first_name`, `last_name`, `email`, `phone`, `password`, `role`, `created_at`) VALUES(?,?,?,?,?,?)',
+    'INSERT INTO `users`( `first_name`, `last_name`, `email`, `phone`, `password`, `role`, `created_at`) VALUES(?,?,?,?,?,?)',
     [user.firstname, user.lastname, user.email, user.phone, user.password, user.role],
     1
   );

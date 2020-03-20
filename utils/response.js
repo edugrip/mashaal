@@ -21,7 +21,10 @@ module.exports.try = async (query, dataArray, single = false) => {
   }
 };
 module.exports.getUserReadableError = async function(res, err) {
+  // console.log(err);
+  
   try {
+  
     var err_code = err.code;
     var fld = {
       error_code: err.code,

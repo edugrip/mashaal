@@ -1,0 +1,89 @@
+<% include header.ejs %>
+<style>
+  select#limitselect {
+    width: 100%;
+  }
+  .color:hover{
+    background-color: #25a01d;
+  }
+</style>
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css"
+/>
+<script
+  type="text/javascript"
+  charset="utf8"
+  src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"
+></script>
+<!-- End Navbar -->
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="header">
+            <h4 class="title">Complaint list</h4>
+            <!-- <p class="category">Here is a subtitle for this table</p> -->
+          </div>
+          <div class="content table-responsive">
+            <table class="table table-striped" id="myTable">
+              <thead>
+                <th>#</th>
+                <th>User Email</th>
+                <th>User Complaint</th>
+                <th>Action</th>
+                <th>Edit</th>
+              </thead>
+              <tbody>
+                <% if (locals.complaints) { 
+                  let i = 1; %>
+             <% locals.complaints.forEach(function(complaint){  %>
+             <tr>
+                 <th>   
+                     <%= i  %> 
+                 </th>
+                 <th>
+                   <%= complaint.email %> 
+               </th>
+                 <th>
+                     <%= complaint.complaint  %>
+                 </th>
+                 <%if(complaint.status==0){ %>
+                 <th>
+                  <a href="complaint_approve?id=<%-complaint.id%>" class="btn btn-success">Approve</a>
+                  <a href="complaint_reject?id=<%-complaint.id%>" class="btn btn-warning">Reject</a>
+                  </th>
+                  <% } else if(complaint.status==1){ %>
+                    <th>
+                    <a href="#" class="btn btn-success btn-block color">Approved</a>
+                    </th>
+                <%  } else{ %>
+                  <th>
+                    <a href="#" class="btn btn-danger btn-block">Rejectd</a>
+                    </th>
+                 <% } %>
+                 <th class="text-center">
+                   <a href="/admin/edit_complaint?id=<%-complaint.id%>" id=""><i class="far fa-edit"></i></a>
+                </th>
+             </tr>
+             <% i++ }) %>
+             <% } %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function() {
+    $("#myTable").dataTable({
+      paging: true,
+      ordering: true
+    });
+  });
+</script>

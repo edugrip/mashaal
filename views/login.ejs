@@ -27,14 +27,27 @@
                   <h3 class="mb-0 my-2">Sign Up</h3>
                 </div>
                 <div class="card-body">
-                  <form class="form" role="form" action="/register/register" method="POST">
+                  <form class="form" role="form" action="<%-locals.role %>-login" method="POST">
                     <div class="form-group">
                       <label for="inputEmail3">Email</label>
                       <input
                         type="email"
                         name="email"
                         class="form-control"
+                        value = "krishansokhal2000@gmail.com"
                         placeholder="email@gmail.com"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPassword3">Password</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        name="password"
+                        value="1234"
+                        placeholder="password"
+                        title="At least 6 characters with letters and numbers"
                         required=""
                       />
                     </div>
@@ -43,7 +56,7 @@
                         type="submit"
                         class="btn btn-success btn-lg float-right"
                       >
-                        Register
+                        Login
                       </button>
                     </div>
                   </form>

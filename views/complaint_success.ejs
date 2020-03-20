@@ -1,0 +1,40 @@
+<% include header.ejs %>
+
+<section id="content-wrapper">
+  <div class="row">
+    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-2"></div>
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-7 school_education">
+    		
+    				<div class="card bg-light">
+                        <div class="card-header text-center">
+                            <h4>Your Complaint</h4>
+                        </div>
+                        <div class="card-body">
+                          <!-- <a href="send_complaint">Enter New Query</a> -->
+                            <table class="table table-striped" id="myTable">
+                              <thead>
+                                <th>Complaint</th>
+                                <th>Tiket No.</th>
+                              </thead>
+                              <tbody>
+                                <% if (locals.complaint) { 
+                                  let i = 1; %>
+                             <% locals.complaint.forEach(function(complaint){  %>
+                             <tr>
+                                 <th>   
+                                  <a href="complaint_details?id=<%-complaint.id%>"><%-complaint.complaint  %></a>
+                                 </th>
+                                 <th><%-complaint.id  %></th>
+                             </tr>
+                             <% i++ }) %>
+                             <% } %>
+                              </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center"></div>
+	    	</div>
+    </div>
+  </div>
+</section>

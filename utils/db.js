@@ -3,9 +3,9 @@ var config = {
   host: process.env.host || 'localhost',
   user: process.env.user || 'root',
   password: process.env.password || 'password',
-  database: process.env.database || 'educations',
+  database: process.env.database || 'mashaal',
   insecureAuth: true,
-  // debug: ['ComQueryPacket', 'RowDataPacket'],
+  //debug: ['ComQueryPacket', 'RowDataPacket'],
 };
 
 // let config = {} //Make this global to use all over the application

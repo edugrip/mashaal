@@ -2,6 +2,7 @@ body {
   padding-bottom: 30px;
   position: relative;
   min-height: 100%;
+  background-color:#f8f9fa;
 }
 
 a {
@@ -29,8 +30,9 @@ img{
   margin-left: -250px;
   overflow-y: auto;
   overflow-x: hidden;
-  background: #94d4cf;
+  background: #fff;
   transition: all 0.5s ease;
+  box-shadow: 0 4px 16px rgba(20,23,28,.25);
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -48,7 +50,6 @@ img{
   margin: 0;
   font-weight: 600;
   font-size: 24px;
-  color: #fff;
 }
 
 .sidebar-nav {
@@ -117,6 +118,7 @@ img{
 }
 .school_education:hover {
     color: coral;
+    transition: 0.5s;
 }
 .card.logo_area {
     background-color: antiquewhite;

@@ -17,33 +17,26 @@
 		</div>
 	</div>
     <div class="row mt-5">
-    	<div class="col-lg-9 col-md-9 col-sm-9 col-xs-7 text-center">
+    	<div class="col-lg-9 col-md-9 col-sm-9 col-xs-7">
     		<div class="row">
-    			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center">
-    				<div class="card text-center">
-    					<h4><a href="/send_complaint">Psychologieal <br>Counselling</a></h4>
-    				</div>
-		    	</div>
-		    	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center">
-		    		<div class="card text-center">
-    					<h4><a href="#">Mashaal <br> logo</a></h4>
-    				</div>
-		    	</div>
-		    	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center">
-		    		<div class="card text-center">
-    					<h4><a href="/career_guidance">career <br>Guidance</a></h4>
-    				</div>
-		    	</div>
+				<div class="container">
+					<h2>Your Question</h2>
+					<% if(locals.status){ %>
+					<div class="row">
+						<a href="/index/view_complaint" class="ml-auto mr-5 btn btn-primary">View Complaint</a>
+					</div>
+					<% } %>
+					<form action="/index/submit_complaint" method="GET" autocomplete="off"> 
+					  <div class="form-group mt-4">
+						<label>Complaint</label>
+						<input type="text" class="form-control" placeholder="Enter your complaint ......" name="complaint" required>
+					  </div>
+					  <button type="submit" class="btn btn-primary">Submit</button>
+					</form>
 	    	</div>
-    		<div class="card mt-5">
-    			<div class="card-header bg-info">
-    				<h4>Latest Update</h4>
-    			</div>
-    			<div class="card-body bg-light">
-    				
-    			</div>
-    			</div>
-    		</div>
+    		
+			</div>
+    	</div>
     		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center">
     		<div class="card mt-5">
     			<div class="card-header bg-info">
