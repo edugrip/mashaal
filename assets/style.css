@@ -2,18 +2,18 @@ body {
   padding-bottom: 30px;
   position: relative;
   min-height: 100%;
-  background-color:#f8f9fa;
 }
 
 a {
-  transition: background 0.2s, color 0.2s;
+  transition: 0.2s, color 0.2s;
 }
 a:hover,
 a:focus {
   text-decoration: none;
+  color: #ef712b;
 }
-img{
-	max-width: 100%;
+img {
+  max-width: 100%;
 }
 #wrapper {
   padding-left: 0;
@@ -30,9 +30,9 @@ img{
   margin-left: -250px;
   overflow-y: auto;
   overflow-x: hidden;
-  background: #fff;
+  background: #ffffff;
+  box-shadow: 0 4px 10px #7d7a7a;
   transition: all 0.5s ease;
-  box-shadow: 0 4px 16px rgba(20,23,28,.25);
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -50,6 +50,7 @@ img{
   margin: 0;
   font-weight: 600;
   font-size: 24px;
+  color: #fff;
 }
 
 .sidebar-nav {
@@ -67,43 +68,42 @@ img{
 .sidebar-nav > li a {
   display: block;
   text-decoration: none;
-  color: #757575;
+  color: #7d7a7a;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 14px;
 }
 .sidebar-nav > li > a:hover,
 .sidebar-nav > li.active > a {
   text-decoration: none;
-  color: coral;
+  color: #f77225;
 }
 .sidebar-nav > li > a i.fa {
-  font-size: 24px;
-  width: 60px;
+  font-size: 20px;
+  width: 40px;
 }
 
 #navbar-wrapper {
-    width: 100%;
-    position: absolute;
-    z-index: 2;
+  width: 100%;
+  position: absolute;
+  z-index: 2;
 }
 #wrapper.toggled #navbar-wrapper {
-    position: absolute;
-    margin-right: -250px;
+  position: absolute;
+  margin-right: -250px;
 }
 #navbar-wrapper .navbar {
   border-width: 0 0 0 0;
-  background-color: #eee;
+  background: #0b398e;
   font-size: 16px;
   margin-bottom: 0;
   border-radius: 0;
-  box-shadow: 0 4px 16px rgba(20,23,28,.25);
+  /* box-shadow: 0 4px 16px #0b398e; */
 }
 #navbar-wrapper .navbar a {
-  color: #757575;
-
+  color: #e0dcdc;
 }
 #navbar-wrapper .navbar a:hover {
-  color: coral;
+  color: #f77225;
 }
 
 #content-wrapper {
@@ -117,24 +117,33 @@ img{
   margin-right: -250px;
 }
 .school_education:hover {
-    color: coral;
-    transition: 0.5s;
+  color: #f77225;
 }
 .card.logo_area {
-    background-color: antiquewhite;
+  background-color: #fff;
 }
-
+.card-header {
+  background-color: #0b398e;
+  color: #fff;
+}
+.card-header.bg_color1 {
+  background-color: #0b398e;
+  color: #fff;
+}
+.card-header.bg_color2 {
+  background-color: #0b398e;
+  color: #fff;
+}
 @media (min-width: 767px) {
-.site_name{
-		display: none;
-	}
+  .site_name {
+    display: none;
+  }
 }
 @media (min-width: 992px) {
-
   #wrapper {
     padding-left: 250px;
   }
-  
+
   #wrapper.toggled {
     padding-left: 60px;
   }
@@ -142,16 +151,16 @@ img{
   #sidebar-wrapper {
     width: 250px;
   }
-  
+
   #wrapper.toggled #sidebar-wrapper {
     width: 60px;
   }
-  
+
   #wrapper.toggled #navbar-wrapper {
     position: absolute;
     margin-right: -190px;
-}
-  
+  }
+
   #wrapper.toggled #content-wrapper {
     position: absolute;
     margin-right: -190px;
@@ -178,7 +187,6 @@ img{
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-
   #wrapper {
     padding-left: 60px;
   }
@@ -186,12 +194,12 @@ img{
   #sidebar-wrapper {
     width: 60px;
   }
-  
-#wrapper.toggled #navbar-wrapper {
+
+  #wrapper.toggled #navbar-wrapper {
     position: absolute;
     margin-right: -250px;
-}
-  
+  }
+
   #wrapper.toggled #content-wrapper {
     position: absolute;
     margin-right: -250px;
@@ -257,4 +265,38 @@ img{
     position: relative;
     margin-right: 250px;
   }
+}
+/* /////---------//// */
+img.media_img {
+  height: 86px;
+  width: 86px;
+  border-radius: 50%;
+}
+h5.media_head {
+  font-size: 20px;
+  font-weight: 600;
+}
+h6.media_title {
+  font-size: 17px;
+}
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+.card.text-center.bg-light.shadow {
+  border: none;
+}
+.card.text-center.bg-light.p-2 {
+  border: none;
+  color: #7d7a7a;
+}
+.card.text-center.bg-light.p-3 {
+  border: none;
+  color: #7d7a7a;
+}
+.card-body_punjabi_para.bg-light {
+  float: left;
+  text-align: left;
+}
+.card.logo_area_11aa {
+  padding: 3px;
+  color: #ef712b;
+  border: #09398d solid 2px;
 }

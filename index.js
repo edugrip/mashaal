@@ -63,8 +63,6 @@ app.get('/',async(req,res) =>{
 setRedirectPath = async (req) =>{
     req.session.redirectTo = req.originalUrl
   }
-
-
 app.listen(3005, function() {
   console.log('Server running at port 3005: http://127.0.0.1:3005');
   process
