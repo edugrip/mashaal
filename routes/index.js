@@ -8,22 +8,25 @@ var owasp = require("owasp-password-strength-test");
 var middlewares = require('../utils/middlewares')
 module.exports = function(passport) {
   app.get("/submit_complaint",middlewares.save_complaint, async (req, res) => {
+    var user = req.user
     var complaint = ([err, data] = await dbUtils.try(
       `SELECT * from user_queries where user_id = ?`,
       [req.user]
     ));
     var complaint = complaint[1];
-    res.render("complaint_success",{complaint});
+    res.render("complaint_success",{complaint,user});
   });
   app.get("/view_complaint", async (req, res) => {
+    var user = req.user
     var complaint = ([err, data] = await dbUtils.try(
       `SELECT * from user_queries where user_id = ?`,
       [req.user]
     ));
     var complaint = complaint[1];
-    res.render("complaint_success",{complaint});
+    res.render("complaint_success",{complaint,user});
   });
   app.get("/complaint_details", async (req, res) => {
+    var user = req.user
     if(req.query.page){
     var comments = ([err, data] = await dbUtils.try(
       `SELECT * from query_comments where query_id = ? LIMIT 10 OFFSET ?`,
@@ -70,7 +73,7 @@ module.exports = function(passport) {
       ));
     }
     var complaint = complaint[1];
-    res.render("complaint_details",{comment,complaint});
+    res.render("complaint_details",{comment,complaint,user});
   });
   return app;
 };

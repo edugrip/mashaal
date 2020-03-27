@@ -37,7 +37,7 @@ save_complaint = async (req, res, next) => {
     var query = "INSERT user_queries  SET ? ";
     var user = ([err, data] = await dbUtils.try(query, [fld]));
     if (err) {
-      console.log(err);
+      // console.log(err);
       var err = await dbUtils.getUserReadableError(res, err);
       throw new Error(err);
     }else{
@@ -47,7 +47,7 @@ save_complaint = async (req, res, next) => {
     next();
   }else{
     var fld = {
-      email: req.user,
+      user_id: req.user,
       complaint: req.query.complaint
     };
     var query = "INSERT INTO user_queries  SET ? ";

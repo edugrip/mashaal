@@ -59,18 +59,29 @@ module.exports = function(passport) {
   });
 
   app.get("/send_complaint", async (req, res) => {
+    var user = req.user
     if(req.user){
-      res.render("send_complaint",{status:1});
+      res.render("send_complaint",{status:1,user});
     }else{
     res.render("send_complaint");
     }
   });
   app.get("/career_guidance", async (req, res) => {
-    res.render("career_guidance");
+    var user = req.user
+    if(!req.user){
+    res.render("career_guidance",{user});
+    }else{
+      res.render("career_guidance"); 
+    }
   });
 
   app.get("/index", async (req, res) => {
+    var user = req.user
+    if(!req.user){
     res.render("index");
+    }else{
+      res.render("index",{user});
+    }
   });
 
   return app;

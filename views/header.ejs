@@ -79,8 +79,12 @@
             <a href="#" class="nav-item nav-link active">Home</a>
             <a href="#" class="nav-item nav-link">About</a>
             <a href="#" class="nav-item nav-link">Contact Us</a>
-            <a href="#" class="nav-item nav-link">School Counsellers Login</a>
-            <a href="login" class="nav-item nav-link "><i class="fa fa-sign-in-alt"></i> Login </a>
+			<a href="#" class="nav-item nav-link">School Counsellers</a>
+			<% if(locals.user){ %>
+			<a href="/logout" class="nav-item nav-link "><i class="fa fa-sign-in-alt"></i> Logout </a>
+			<% }else{ %>
+				<a href="login" class="nav-item nav-link "><i class="fa fa-sign-in-alt"></i> Login </a>
+			<% } %>
           </div>
         </div>
       </div>
