@@ -5,6 +5,7 @@ var config = require("../config/config");
 var jwt = require("jsonwebtoken");
 var utils = require("../utils/utils");
 var owasp = require("owasp-password-strength-test");
+
 module.exports = function(passport) {
 
     app.get('/dashboard',async(req,res)=>{

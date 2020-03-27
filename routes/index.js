@@ -63,7 +63,7 @@ module.exports = function(passport) {
         if (index == comments.length - 1) 
         var comment = comment
       })
-      console.log(comment);
+      // console.log(comment);
       var complaint = ([err, data] = await dbUtils.try(
         `SELECT * from user_queries where id = ?`,
         [req.query.id]

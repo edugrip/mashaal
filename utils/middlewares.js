@@ -29,7 +29,7 @@ save_complaint = async (req, res, next) => {
       req.cookies["connect.sid"]
     ]));
     var complaint = complaint[1];
-    if(complaint){
+    if(complaint.length){
     var fld = {
       user_id: req.user,
       complaint: complaint[0].complaint
