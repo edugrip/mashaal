@@ -56,14 +56,13 @@ module.exports = function(passport) {
       var comments = comments[1]
       comment = []
       comment = comments
-      comments.forEach(async (comments, index) => {
+      comment.forEach(async (comment, index) => {
         var count_reply = ([err, data] = await dbUtils.try(
           `SELECT ifnull(count(id),0) as ids from query_comments where parent = ?`,
-          [comments.id]
+          [comment.id]
         ));
         var count_reply = count_reply[1]
-        comment[index].count_reply = count_reply;
-        if (index == comments.length - 1) 
+        comments[index].count_reply = count_reply;
         var comment = comment
       })
       // console.log(comment);

@@ -1,51 +1,62 @@
 <% include header.ejs %>
 <style>
-body{
-	background-color: #0191C8;
-}
-.comment-main{
-	background-color: #74C2E1;
-	box-shadow: 1px 2px 6px 2px #005B9A;
-}
-.comment-main ul{
-	list-style: none;
-}
-.sub-cmt-img{
-	width: 55px !important;
+  body {
+    background-color: #0191C8;
+  }
+
+  .comment-main {
+    background-color: #74C2E1;
+    box-shadow: 1px 2px 6px 2px #005B9A;
+  }
+
+  .comment-main ul {
+    list-style: none;
+  }
+
+  .sub-cmt-img {
+    width: 55px !important;
     height: 55px !important;
     border-radius: 50%;
-} 
-.main-cmt-img{
+  }
+
+  .main-cmt-img {
     width: 40px !important;
     height: 40px !important;
     border-radius: 50%;
-}
-.border-bottom{
-	font-size: 13px;
-	border-bottom: 1px solid #d3d3d3;
-}
-.user-comment{
-	background-color: #f3f3f3 !important;
+  }
+
+  .border-bottom {
+    font-size: 13px;
+    border-bottom: 1px solid #d3d3d3;
+  }
+
+  .user-comment {
+    background-color: #f3f3f3 !important;
     box-shadow: 0px 5px 8px -4px #c1c1c1;
-}
-.user-comment-desc, .user-comment span{
-	color: #a0a0a0;
-}
-.user-comment-desc p{
-	font-size: 12px;
-	display: inline-block;
-	float: left;
-}
-.send-icon i{
-	font-size: 20px;
-	background: #f3f3f3;
-	padding: 6px 5px;
-	border-radius: 50%;
-	color: #74C2E1;
-	height: 35px;
-	width: 35px;
-}
-.user-comment:before{
+  }
+
+  .user-comment-desc,
+  .user-comment span {
+    color: #a0a0a0;
+  }
+
+  .user-comment-desc p {
+    font-size: 12px;
+    display: inline-block;
+    float: left;
+  }
+
+  .send-icon i {
+    font-size: 20px;
+    background: #f3f3f3;
+    padding: 6px 5px;
+    border-radius: 50%;
+    color: #74C2E1;
+    height: 35px;
+    width: 35px;
+  }
+
+  .user-comment:before {
     content: "";
     height: 0;
     width: 0;
@@ -54,99 +65,109 @@ body{
     position: absolute;
     border-style: solid;
     border-width: 13px 0 0 13px;
-	border-color: #f3f3f3 transparent transparent transparent; 
-}
-div#comment_reply {
-    display: none;
-}
-div#comment_reply_show {
-    display: block;
-}
+    border-color: #f3f3f3 transparent transparent transparent;
+  }
+
+  /* p.ml-auto.reply {
+    margin-top: -41px;
+    z-index: 1;
+    margin-right: 18px;
+} */
 </style>
 <br><br>
 <div class="content">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-10 offset-lg-1 col-12 comment-main rounded">
-            <div class="card p-3 mt-3">
-                <div class="row comment-box p-1 pt-3 pr-4">
-                <div class="col-lg-2 col-3 user-img text-center">
-                  <img src="../img/download.png">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1 col-12 comment-main rounded">
+        <div class="card p-3 mt-3">
+          <div class="row comment-box p-1 pt-3 pr-4">
+            <div class="col-lg-2 col-3 user-img text-center">
+              <img src="../img/download.png">
+            </div>
+            <div class="col-lg-10 col-9 user-comment bg-light rounded pb-1">
+              <div class="row">
+                <div class="col-lg-8 col-6 border-bottom pr-0">
+                  <h5 class="w-100 p-2 m-0"><%- locals.complaint[0].complaint %></h5>
                 </div>
-                <div class="col-lg-10 col-9 user-comment bg-light rounded pb-1">
-                     <div class="row">
-                           <div class="col-lg-8 col-6 border-bottom pr-0">
-                              <h5 class="w-100 p-2 m-0"><%- locals.complaint[0].complaint %></h5>
-                           </div>
-                           <!-- <div class="col-lg-4 col-6 border-bottom">
+                <!-- <div class="col-lg-4 col-6 border-bottom">
                               <p class="w-100 p-2 m-0"><span class="float-right"><i class="fa fa-clock-o mr-1" aria-hidden="true"></i>01 : 00</span></p>
                            </div> -->
-                     </div> 
-                    <div class="user-comment-desc p-1 pl-2 mt-3">
-                        <p class="m-0 mr-2"><i class="fa fa-user"></i> krishan</p>                      
-                        <p class="m-0 mr-2">Updated -<%- locals.complaint[0].created_at %> </p>           
-                    </div>    
+              </div>
+              <div class="user-comment-desc p-1 pl-2 mt-3">
+                <p class="m-0 mr-2"><i class="fa fa-user"></i> krishan</p>
+                <p class="m-0 mr-2">Updated -<%- locals.complaint[0].created_at %> </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="p-0">
+          <li>
+            <% if(locals.comment){
+                     for(i=0;i<locals.comment.length;i++){  %>
+            <div class="row comment-box p-1 pt-3 pr-4">
+              <div class="col-lg-2 col-3 user-img text-center">
+                <img src="../img/download.png" class="main-cmt-img">
+              </div>
+              <div class="col-lg-10 col-9 user-comment bg-light rounded pb-1">
+                <div class="row">
+                  <div class="col-lg-8 col-6 border-bottom pr-0">
+                    <h5 class="w-100 p-2 m-0"><%-locals.comment[i].comment %></h5>
+                  </div>
+                </div>
+                <div class="user-comment-desc p-1 pl-2">
+                  <p class="m-0 mr-2"><i class="fa fa-user"></i> krishan</p>
+                  <p class="m-0 mr-2">Updated - 19/03/2020</p>
+                  <p class="m-0 mr-2">+Reply<%-locals.comment[i].ids %></p>
+                  <p class="m-0 ml-5"><a href="#" id="reply"> Reply</a></p>
+
                 </div>
               </div>
             </div>
-          <ul class="p-0">
-            <li>
-                <% if(locals.comment){
-                     for(i=0;i<locals.comment.length;i++){  %>
-                <div class="row comment-box p-1 pt-3 pr-4">
-                  <div class="col-lg-2 col-3 user-img text-center">
-                    <img src="../img/download.png" class="main-cmt-img">
-                  </div>
-                  <div class="col-lg-10 col-9 user-comment bg-light rounded pb-1">
-                       <div class="row">
-                             <div class="col-lg-8 col-6 border-bottom pr-0">
-                                <h5 class="w-100 p-2 m-0"><%-locals.comment[i].comment %></h5>
-                             </div>
-                             <!-- <div class="col-lg-4 col-6 border-bottom">
-                                <p class="w-100 p-2 m-0"><span class="float-right"><i class="fa fa-clock-o mr-1" aria-hidden="true"></i>01 : 00</span></p>
-                             </div> -->
-                       </div> 
-                      <div class="user-comment-desc p-1 pl-2">
-                          <p class="m-0 mr-2"><i class="fa fa-user"></i> krishan</p>                      
-                          <p class="m-0 mr-2">Updated - 19/03/2020</p>
-                          <p class="m-0 mr-2">+Reply<%-locals.comment[i].ids %></p>
-                          <p class="m-0 ml-5"><a href="#" id="reply"> Reply</a></p>
-                          <p class="m-0 ml-5"><a href="#"> Show Reply</a></p>                
-                      </div>    
-                  </div>
-                </div>
-                <% } }%>
-                <div class="row comment_reply" style="display: none;">
-                    <div class="col-lg-10 col-10">
-                      <input type="text" class="form-control" placeholder="Reply ...">
-                    </div>
-                    <div class="col-lg-2 col-2 send-icon">
-                      <a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-               
-            </li>
-            <hr>
-            <div class="row">
+            <div class="d-flex flex-row-reverse">
+              <div class="p-2 mr-3"><a href="javascript:void(0)" class="reply">Show Reply</a></div>
+            </div>
+            <% } } %>
+
+            <div class="row comment_reply" style="display: none;">
               <div class="col-lg-10 col-10">
-                <input type="text" class="form-control" placeholder="write comments ...">
+                <input type="text" class="form-control" placeholder="Reply ...">
               </div>
               <div class="col-lg-2 col-2 send-icon">
-                <a href="#" target="_blank"><i class="fa fa-paper-plane" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-paper-plane" aria-hidden="true"></i></a>
               </div>
             </div>
-          </ul>
+
+          </li>
+          <hr>
+          <div class="row">
+            <div class="col-lg-10 col-10">
+              <input type="text" class="form-control" placeholder="write comments ...">
+            </div>
+            <div class="col-lg-2 col-2 send-icon">
+              <a href="#" target="_blank"><i class="fa fa-paper-plane" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </ul>
       </div>
     </div>
-    </div>
+  </div>
 
-<script>
-$(document).ready(function(){
-  $("#reply").click(function(){
-    $(".comment_reply").toggle();
-  });
-});
-</script>
+  <script>
+    $(document).ready(function () {
+      $("#reply").click(function () {
+        $(".comment_reply").toggle();
+      });
+    });
 
-</body>
-</html>
+    var elements = document.getElementsByClassName("reply")
+    Array.from(elements).forEach(function (element) {
+      element.addEventListener('click', (event) => {
+        console.log(event.target);
+        $(event.target).append('<div class="row"><div class="col-lg-11 offset-lg-1"><ul class="p-0"><li><div class="row comment-box p-1 pt-2 pr-4"><div class="col-lg-3 col-3 user-img"><img src="../img/download.png" class="p-2 float-right sub-cmt-img"></div><div class="col-lg-9 col-9 user-comment bg-light rounded pb-1 mt-2"><div class="row"><div class="col-lg-7 col-6 border-bottom pr-0"><p class="w-100 p-2 m-0">Lorem ipsum dolor sit amet.</p></div><div class="col-lg-5 col-6 border-bottom"><p class="w-100 p-2 m-0"><span class="float-right"><i class="fa fa-clock-o mr-1" aria-hidden="true"></i>01 : 00</span></p></div></div><div class="user-comment-desc p-1 pl-2"><p class="m-0 mr-2"><span><i class="fa fa-thumbs-up mr-1" aria-hidden="true"></i></span></i>510</p><p class="m-0 mr-2"><span><i class="fa fa-thumbs-down mr-1" aria-hidden="true"></i></span></i>690</p></div></div></div></li></ul></div></div>')
+      });
+    });
+  </script>
+
+  </body>
+
+  </html>
