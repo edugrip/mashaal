@@ -30,7 +30,7 @@
     "express": "^4.16.4",
     "express-fileupload": "^1.0.0-alpha.1",
     "express-flash": "0.0.2",
-    "express-jwt": "^5.3.1",
+    "express-jwt": "^6.0.0",
     "express-myconnection": "^1.0.4",
     "express-session": "^1.15.6",
     "express-validation": "^1.0.3",
