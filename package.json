@@ -14,7 +14,7 @@
     "@ckeditor/ckeditor5-build-classic": "^10.1.0",
     "@ckeditor/ckeditor5-engine": "^10.1.0",
     "@sendgrid/mail": "^6.4.0",
-    "async": "^2.6.1",
+    "async": "^2.6.4",
     "await": "^0.2.6",
     "await-to-js": "^2.1.1",
     "bcrypt": "^3.0.6",
